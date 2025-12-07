@@ -6,3 +6,7 @@ url= [initial_conditions.csv](https://github.com/liz-lewis-manchester/CNM_2025_g
 df=pd.read_csv(url)
 array_data = df.to_numpy()
 print(array_data)
+
+def_init_(self,U=0.1,dx=0.2,dt=10.0):
+self._validate_parameters(U,dx,dt)
+self.U-
