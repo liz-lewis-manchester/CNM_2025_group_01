@@ -53,6 +53,7 @@ configs = [
 """
 exponentially decaying theta
 rest are the same as case 1
+need 31 values for theta
 """
 L = 20
 T = 300
@@ -60,7 +61,12 @@ dx = 0.2
 dt = 10
 U = 10
 variable_velocity = False
-def exp_decay()
+n = T/dt +1
+def exp_decay_array(length, decay_factor, initial=250):
+  arr = np.array(length)
+  decay_array = np.exp(-decay_factor * arr)
+  return initial * decay_array
+theta = exp_decay_array(n, decay_factor=0.01, initial=250) #adjust values of decay factor to change the rate of decay, or initial for different cases
 
 # Case 5
 L = 20
@@ -68,4 +74,10 @@ T = 300
 dx = 0.2
 dt = 10
 variable_velocity = True
-def perturbation(degree)
+n = T/dt +1
+def perturbation(length, base value, degree):
+  arr = np.full(length, base_value)
+  noise = np.random.uniform(-degree, degree, length)
+  perturbed_arr = arr * (1+noise)
+  return perturbed_arr
+U = perturbation(n, 0.1, 0.1)
