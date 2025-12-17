@@ -1,12 +1,14 @@
-import numpy as np
-import pandas as pd
-import matplotlib as plt
-from scipy.interpolate import interp1d
-path= "/content/initial_conditions.csv"
-df=pd.read_csv(path, encoding = 'latin1')
+# importing necessary libraries 
+import numpy as np 
+import pandas as pd 
+import   matplotlib  # as plot #uses as plotting graph  
+from scipy. interpolate import interp1d
+path= "/content/initial_conditions.csv"   #define the CSV data file path and read CSV file into pandas DataFrame
 
-array_data = df.to_numpy()
-f = interp1d(x, y, kind='linear')
+# reading the data, 'latin1' encoding handles special characters if present in the file
+df=pd.read_csv(path, encoding = 'latin1') 
+array_data = df.to_numpy()  # converting data to numpy array
+f = interp1d(x, y, kind='linear')  
 
 # generate 10 points between each interval
 num_between = 5
