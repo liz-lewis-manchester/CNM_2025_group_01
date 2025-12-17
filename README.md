@@ -8,8 +8,8 @@ path= "/content/initial_conditions.csv"   #define the CSV data file path and rea
 # reading the data, 'latin1' encoding handles special characters if present in the file
 df=pd.read_csv(path, encoding = 'latin1') 
 array_data = df.to_numpy()  # converting data to numpy array
-x=
-y=
+x=df['Concentration (µg/m_)']
+y=df['Distance (m)']
 f = interp1d(x, y, kind='linear')  
 
 # generate 10 points between each interval
