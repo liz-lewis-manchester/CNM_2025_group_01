@@ -16,7 +16,7 @@ L = 20
 T = 300
 dx = 0.2
 dt = 10
-U = 10
+U = 0.1
 theta = 250
 variable_velocity = False
 
@@ -29,7 +29,7 @@ L = 20
 T = 300
 dx = 0.2
 dt = 10{"U": 0.10, "dx": 0.2, "dt": 10.0, "label": U=0.10, dx=0.2, dt=10}
-U = 10
+U = 0.1
 theta = csv file after interpolation
 variable_velocity = False
 
@@ -60,7 +60,7 @@ L = 20
 T = 300
 dx = 0.2
 dt = 10
-U = 10
+U = 0.1
 variable_velocity = False
 n = T/dt +1
 def exp_decay_array(length, decay_factor, initial=250):
