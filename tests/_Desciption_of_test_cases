@@ -1,0 +1,84 @@
+
+# CNM_2025_group_01
+# Input data and variables for each test cases
+"""
+dx is delta x
+dt is delta t
+"""
+# Case 1
+"""
+From x=0 to x=20, with resolution of 0.2
+5 mins=300s, so from t=0 to t=300, with resolution of 10s
+initial consentration, theta =250
+U = 0.1
+"""
+L = 20
+T = 300
+dx = 0.2
+dt = 10
+U = 0.1
+theta = 250
+variable_velocity = False
+
+# Case 2
+"""
+Same model domain as case 1, but initial conditions from csv file
+Should include the interpolation in the set up part with importing the file
+"""
+L = 20
+T = 300
+dx = 0.2
+dt = 10{"U": 0.10, "dx": 0.2, "dt": 10.0, "label": U=0.10, dx=0.2, dt=10}
+U = 0.1
+theta = csv file after interpolation
+variable_velocity = False
+
+# Case 3
+"""
+compare results with different combination of U, dx, and dt, changing one per time
+L and T are constant
+They are saved in an array, so they can run with the same code with a for loop
+"""
+L = 20
+T = 300
+theta = 250
+variable_velocity = False
+configs = [ 
+{"U": 0.05, "dx": 0.2, "dt": 10.0, "label": U=0.05, dx=0.2, dt=10}
+{"U": 0.10, "dx": 0.2, "dt": 10.0, "label": U=0.10, dx=0.2, dt=10}
+{"U": 0.10, "dx": 0.1, "dt": 10.0, "label": U=0.10, dx=0.1, dt=10}
+{"U": 0.10, "dx": 0.2, "dt": 5.0, "label": U=0.10, dx=0.2, dt=5}
+]
+
+# Case 4
+"""
+exponentially decaying theta
+rest are the same as case 1
+need 31 values for theta
+"""
+L = 20
+T = 300
+dx = 0.2
+dt = 10
+U = 0.1
+variable_velocity = False
+n = T/dt +1
+def exp_decay_array(length, decay_factor, initial=250):
+  arr = np.array(length)
+  decay_array = np.exp(-decay_factor * arr)
+  return initial * decay_array
+theta = exp_decay_array(n, decay_factor=0.01, initial=250) #adjust values of decay factor to change the rate of decay, or initial for different cases
+
+# Case 5
+L = 20
+T = 300
+dx = 0.2
+dt = 10
+variable_velocity = True
+n = T/dt +1
+def perturbation(length, base value, degree):
+  arr = np.full(length, base_value)
+  noise = np.random.uniform(-degree, degree, length)
+  perturbed_arr = arr * (1+noise)
+  return perturbed_arr
+U = perturbation(n, 0.1, 0.1)
